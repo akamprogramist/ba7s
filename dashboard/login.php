@@ -4,9 +4,9 @@ require 'config.php';
 if (isset($_POST['submit'])) {
     $usernameemail = $_POST["usernameemail"];
     $password = $_POST["password"];
-    $result = mysqli_query($conn, "SELECT * FROM tb_user WHERE username='$usernameemail'or email = '$usernameemail'");
-    $row = mysqli_fetch_assoc($result);
-    if (mysqli_num_rows($result) > 0) {
+    $result = sqlsrv_query($conn, "SELECT * FROM users WHERE username='$usernameemail' OR email = '$usernameemail'");
+    $row = sqlsrv_fetch_array($result);
+    if (sqlsrv_num_rows($result) > 0) {
         if ($password == $row['password']) {
             $_SESSION["login"] = true;
             $_SESSION["id"] = $row["id"];
@@ -20,6 +20,8 @@ if (isset($_POST['submit'])) {
         "<script> alert('User Not Registered'); </script>";
     }
 }
+
+
 ?>
 
 <!DOCTYPE html>

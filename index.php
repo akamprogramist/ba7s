@@ -3,18 +3,18 @@ require 'dashboard/config.php';
 ?>
 <?php
 $sql = 'SELECT * FROM carshow';
-$result = mysqli_query($conn, $sql);
-$carshow = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$result = sqlsrv_query($conn, $sql);
+$carshow = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC);
 ?>
 <?php
 $sql = 'SELECT * FROM parts';
-$result = mysqli_query($conn, $sql);
-$parts = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$result = sqlsrv_query($conn, $sql);
+$parts = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC);
 ?>
 <?php
 $sql = 'SELECT * FROM blog';
-$result = mysqli_query($conn, $sql);
-$blog = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$result = sqlsrv_query($conn, $sql);
+$blog = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>

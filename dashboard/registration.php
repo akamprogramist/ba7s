@@ -9,14 +9,15 @@ if (isset($_POST["submit"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
     $confirmpassword = $_POST["confirmpassword"];
-    $duplicate = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$username' OR email = '$email'");
-    if (mysqli_num_rows($duplicate) > 0) {
+    $duplicate = sqlsrv_query($conn, "SELECT * FROM users WHERE username = '$username' OR email = '$email'");
+    if (sqlsrv_num_rows($duplicate) > 0) {
         echo
         "<script> alert('Username or Email Has Already Taken'); </script>";
     } else {
         if ($password == $confirmpassword) {
-            $query = "INSERT INTO tb_user VALUES('','$name','$username','$email','$password')";
-            mysqli_query($conn, $query);
+            $query = "INSERT INTO users (name,username,email,password) VALUES(?,?,?,?)";
+            $params = array($name, $username, $email, $password);
+            sqlsrv_query($conn, $query, $params);
             echo
             "<script> alert('Registration Successful'); </script>";
         } else {
@@ -24,6 +25,15 @@ if (isset($_POST["submit"])) {
             "<script> alert('Password Does Not Match'); </script>";
         }
     }
+    // $sql = "INSERT INTO users (name,username,email,password) VALUES ( ?,?,?,?)";
+    // $params = array($name, $username, $email, $password);
+
+    // $stmt = sqlsrv_query($conn, $sql, $params);
+    // if ($stmt === false) {
+    //     die(print_r(sqlsrv_errors(), true));
+    // } else {
+    //     "<script> alert('data entered'); </script>";
+    // }
 }
 ?>
 <!DOCTYPE html>
