@@ -3,18 +3,18 @@ require 'dashboard/config.php';
 ?>
 <?php
 $sql = 'SELECT * FROM carshow';
-$result = sqlsrv_query($conn, $sql);
-$carshow = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC);
+$result = mysqli_query($conn, $sql);
+$carshow = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 <?php
 $sql = 'SELECT * FROM parts';
-$result = sqlsrv_query($conn, $sql);
-$parts = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC);
+$result = mysqli_query($conn, $sql);
+$parts = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 <?php
 $sql = 'SELECT * FROM blog';
-$result = sqlsrv_query($conn, $sql);
-$blog = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC);
+$result = mysqli_query($conn, $sql);
+$blog = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +41,13 @@ $blog = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC);
                 <li><a href="#about">About</a></li>
                 <li><a href="#parts">Parts</a></li>
                 <li><a href="#blog">Our Blog</a></li>
-                <li><a href="login.html">Login</a></li>
+                <?php if (!empty($_SESSION["id"])) : ?>
+                    <li><a href="logout.php">Logout</a></li>
+                    <li><a href="dashboard/index.php">Manage</a></li>
+
+                <?php else : ?>
+                    <li><a href="login.php">Login</a></li>
+                <?php endif; ?>
             </ui>
             <i class='bx bx-search' id="search-icon"></i>
             <div class="search-box container">

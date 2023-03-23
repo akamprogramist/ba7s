@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
-<h1>Add Parts</h1>
+<h1>Add Blog</h1>
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data" class="mt-4 w-75">
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>

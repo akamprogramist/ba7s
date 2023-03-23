@@ -2,12 +2,11 @@
 require 'config.php';
 if (!empty($_SESSION["id"])) {
     $id = $_SESSION["id"];
-    $result = sqlsrv_query($conn, "SELECT * FROM users WHERE id = $id");
-    $row = sqlsrv_fetch_assoc($result);
+    $result = mysqli_query($conn, "SELECT * FROM tb_user WHERE id = $id");
+    $row = mysqli_fetch_assoc($result);
 } else {
     header("Location: login.php");
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +19,8 @@ if (!empty($_SESSION["id"])) {
 
 <body>
     <h1>Welcome <?php echo $row["name"]; ?></h1>
-    <a href="logout.php">Logout</a><br> <br>
+    <a href="../index.php">Home</a><br> <br>
+    <a href="../logout.php">Logout</a><br> <br>
     <a href="addcar.php">add a car</a><br> <br>
     <a href="addpart.php">add a part</a><br> <br>
     <a href="addblog.php">add a blog</a><br> <br>
