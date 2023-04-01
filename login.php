@@ -12,7 +12,11 @@ if (isset($_POST["submit"])) {
     if ($password == $row['password']) {
       $_SESSION["login"] = true;
       $_SESSION["id"] = $row["id"];
-      header("Location: ./dashboard/index.php");
+      if ($row['type'] === 1) {
+        header("Location: ./dashboard/index.php");
+      } else {
+        header("Location: index.php");
+      }
     } else {
       echo
       "<script> alert('Wrong Password'); </script>";
