@@ -1,5 +1,8 @@
 <?php
 require 'dashboard/config.php';
+$sql = 'SELECT * FROM tb_user ';
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
 ?>
 <?php
 $sql = 'SELECT * FROM carshow';
@@ -41,10 +44,12 @@ $blog = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 <li><a href="#about">About</a></li>
                 <li><a href="#parts">Parts</a></li>
                 <li><a href="#blog">Our Blog</a></li>
-                <?php if (!empty($_SESSION["id"])) : ?>
+                <?php if (!empty($_SESSION["id"]) && ($row["type"] === '1')) : ?>
                     <li><a href="logout.php">Logout</a></li>
                     <li><a href="dashboard/index.php">Manage</a></li>
 
+                <?php elseif (!empty($_SESSION["id"]) && ($row["type"] === '0')) : ?>
+                    <li><a href="logout.php">Logout</a></li>
                 <?php else : ?>
                     <li><a href="login.php">Login</a></li>
                 <?php endif; ?>
@@ -53,17 +58,6 @@ $blog = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <div class="search-box container">
                 <input type="search" name="" id="" placeholder="Search here...">
             </div>
-            <!-- <div class="lang-menu">
-                <div class="selected-lang">
-                  English
-              <ul>
-                  <li>
-                      <a href="" class="us">English</a>
-                  </li>
-                  <li>
-                      <a href="" class="ae">Arabic</a>
-                  </li>
-              </ul> -->
         </div>
         </div>
     </header>
@@ -91,26 +85,6 @@ $blog = mysqli_fetch_all($result, MYSQLI_ASSOC);
                     <h2><?php echo $item['carname'] ?></h2>
                 </div>
             <?php endforeach; ?>
-            <!-- <div class="box">
-                <img src="img/car2.jpg" alt="">
-                <h2>Porche Car</h2>
-            </div>
-            <div class="box">
-                <img src="img/car3.jpg" alt="">
-                <h2>Porche Car</h2>
-            </div>
-            <div class="box">
-                <img src="img/car4.jpg" alt="">
-                <h2>Porche Car</h2>
-            </div>
-            <div class="box">
-                <img src="img/car5.jpg" alt="">
-                <h2>Porche Car</h2>
-            </div>
-            <div class="box">
-                <img src="img/car6.jpg" alt="">
-                <h2>Porche Car</h2>
-            </div> -->
         </div>
     </section>
     <section class="about container" id="about">
@@ -146,46 +120,6 @@ $blog = mysqli_fetch_all($result, MYSQLI_ASSOC);
                     <a href="#" class="details">View Details</a>
                 </div>
             <?php endforeach; ?>
-            <!-- <div class="box">
-                <img src="img/part2.png" alt="">
-                <h3>Auto Spare Parts</h3>
-                <span>$120.99</span>
-                <i class='bx bxs-star'>(6 Reviews)</i>
-                <a href="#" class="btn">Buy Now</a>
-                <a href="#" class="details">View Details</a>
-            </div>
-            <div class="box">
-                <img src="img/part3.png" alt="">
-                <h3>Auto Spare Parts</h3>
-                <span>$120.99</span>
-                <i class='bx bxs-star'>(6 Reviews)</i>
-                <a href="#" class="btn">Buy Now</a>
-                <a href="#" class="details">View Details</a>
-            </div>
-            <div class="box">
-                <img src="img/part4.png" alt="">
-                <h3>Auto Spare Parts</h3>
-                <span>$120.99</span>
-                <i class='bx bxs-star'>(6 Reviews)</i>
-                <a href="#" class="btn">Buy Now</a>
-                <a href="#" class="details">View Details</a>
-            </div>
-            <div class="box">
-                <img src="img/part5.png" alt="">
-                <h3>Auto Spare Parts</h3>
-                <span>$120.99</span>
-                <i class='bx bxs-star'>(6 Reviews)</i>
-                <a href="#" class="btn">Buy Now</a>
-                <a href="#" class="details">View Details</a>
-            </div>
-            <div class="box">
-                <img src="img/part6.png" alt="">
-                <h3>Auto Spare Parts</h3>
-                <span>$120.99</span>
-                <i class='bx bxs-star'>(6 Reviews)</i>
-                <a href="#" class="btn">Buy Now</a>
-                <a href="#" class="details">View Details</a>
-            </div> -->
         </div>
     </section>
     <section class="blog" id="blog">
@@ -208,20 +142,7 @@ $blog = mysqli_fetch_all($result, MYSQLI_ASSOC);
                     <a href="#" id="link" class="blog-btn">Read More<i class='bx bx-right-arrow-alt'></i></a>
                 </div>
             <?php endforeach; ?>
-            <!-- <div class="box">
-                <img src="img/car4.jpg" alt="">
-                <span id="span">Dec 14 2022</span>
-                <h3>What is the best car on this day</h3>
-                <p>See the best cars here.</p>
-                <a href="#" id="link" class="blog-btn">Read More<i class='bx bx-right-arrow-alt'></i></a>
-            </div>
-            <div class="box">
-                <img src="img/car3.jpg" alt="">
-                <span id="span">Dec 14 2022</span>
-                <h3>property about the AUDI car</h3>
-                <p>know aboute the AUDI car.</p>
-                <a href="#" id="link" class="blog-btn">Read More<i class='bx bx-right-arrow-alt'></i></a>
-            </div> -->
+
     </section>
     <section class="footer">
         <div class="footer-container container">
