@@ -12,10 +12,11 @@ if (isset($_POST["submit"])) {
     if ($password == $row['password']) {
       $_SESSION["login"] = true;
       $_SESSION["id"] = $row["id"];
-      if ($row['type'] === 1) {
+      $_SESSION['type'] = $row['type'];
+      if ($_SESSION['type'] === '1') {
         header("Location: ./dashboard/index.php");
       } else {
-        header("Location: index.php");
+        header("Location: ./index.php");
       }
     } else {
       echo

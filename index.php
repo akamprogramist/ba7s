@@ -1,8 +1,5 @@
 <?php
 require 'dashboard/config.php';
-$sql = 'SELECT * FROM tb_user ';
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
 ?>
 <?php
 $sql = 'SELECT * FROM carshow';
@@ -44,11 +41,10 @@ $blog = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 <li><a href="#about">About</a></li>
                 <li><a href="#parts">Parts</a></li>
                 <li><a href="#blog">Our Blog</a></li>
-                <?php if (!empty($_SESSION["id"]) && ($row["type"] === '1')) : ?>
+                <?php if (!empty($_SESSION["id"]) && $_SESSION['type'] === '1') : ?>
                     <li><a href="logout.php">Logout</a></li>
                     <li><a href="dashboard/index.php">Manage</a></li>
-
-                <?php elseif (!empty($_SESSION["id"]) && ($row["type"] === '0')) : ?>
+                <?php elseif (!empty($_SESSION["id"]) && $_SESSION['type'] === '0') : ?>
                     <li><a href="logout.php">Logout</a></li>
                 <?php else : ?>
                     <li><a href="login.php">Login</a></li>

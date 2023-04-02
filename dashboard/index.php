@@ -1,9 +1,12 @@
 <?php
 require 'config.php';
-if (!empty($_SESSION["id"])) {
+if (!empty($_SESSION["id"]) && $_SESSION['type'] === '1') {
     $id = $_SESSION["id"];
     $result = mysqli_query($conn, "SELECT * FROM tb_user WHERE id = $id");
     $row = mysqli_fetch_assoc($result);
+    if(isset($_SESSION['type']==='1')){
+
+    }
 } else {
     header("Location: login.php");
 }
