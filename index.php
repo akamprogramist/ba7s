@@ -37,7 +37,7 @@ $blog = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <a href="#" class="logo">Car<span>point</span></a>
             <ui class="navbar">
                 <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#cars">Cars</a></li>
+                <li><a href="cars.php">Cars</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#parts">Parts</a></li>
                 <li><a href="#blog">Our Blog</a></li>

@@ -1,0 +1,37 @@
+.containers {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+.view {
+  text-transform: capitalize;
+  text-align: center;
+  margin: 20px 0 20px 0;
+}
+
+.img {
+  height: 300px;
+}
+.cars {
+  position: relative;
+  background-color: rgb(144, 144, 144);
+}
+.text {
+  text-transform: capitalize;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.grid {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(4, 275px);
+  grid-gap: 30px;
+}
+.year-container {
+  font-size: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+}

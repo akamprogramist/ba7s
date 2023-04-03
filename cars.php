@@ -15,6 +15,7 @@ $carshow = mysqli_fetch_all($result, MYSQLI_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cars.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
@@ -48,23 +49,32 @@ $carshow = mysqli_fetch_all($result, MYSQLI_ASSOC);
     </header>
 
     <section>
-        <section class="cars" id="cars"></section>
-        <div class="heading">
-            <span>View All Cars</span>
-            <h1>We have all types cars</h1>
-        </div>
-        <div class="cars-container container">
-            <?php if (empty($carshow)) : ?>
-                <p>There is no Car</p>
-            <?php endif; ?>
-            <?php foreach ($carshow as $item) : ?>
 
-                <div class="box">
-                    <img src="<?php echo 'img/' . $item['image']; ?>">
-                    <h2><?php echo $item['carname'] ?></h2>
+        <div class="containers">
+            <div class="view">
+                <h1>We have all types cars</h1>
+            </div>
+            <div class="grid">
 
-                </div>
-            <?php endforeach; ?>
+                <?php foreach ($carshow as $item) : ?>
+                    <div class="cars">
+                        <?php if (empty($carshow)) : ?>
+                            <p>There is no Parts</p>
+                        <?php endif; ?>
+                        <img src="img/car1.jpg" alt="">
+                        <div class="text">
+                            <h1 class="title"><?php echo $item['carname'] ?></h1>
+                            <div class="year-container">
+                                <h5 class="year"><?php echo $item['year'] ?></h5>
+                                <h5 class="loan"><?php echo $item['price'] ?>$/day</h5>
+                            </div>
+                            <div class="ava">
+                                <h5><?php echo $item['ava'] ?></h5>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
     </section>
     <section class="footer">
@@ -101,5 +111,6 @@ $carshow = mysqli_fetch_all($result, MYSQLI_ASSOC);
         </div>
     </section>
 </body>
+<script src="main.js"></script>
 
 </html>
