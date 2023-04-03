@@ -5,7 +5,7 @@ if (!empty($_SESSION["id"]) && $_SESSION['type'] === '1') {
     $result = mysqli_query($conn, "SELECT * FROM tb_user WHERE id = $id");
     $row = mysqli_fetch_assoc($result);
 } else {
-    header("Location: login.php");
+    header("Location: ../login.php");
 }
 $sql = 'SELECT * FROM carshow';
 $result = mysqli_query($conn, $sql);
