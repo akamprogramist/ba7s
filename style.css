@@ -189,7 +189,6 @@ header.shadow {
   font-size: 0.938rem;
   font-weight: 300;
 }
-
 .about {
   display: flex;
   flex-wrap: wrap;
@@ -263,6 +262,7 @@ header.shadow {
   color: var(--bg-color);
   background: var(--text-color);
 }
+
 @media (max-width: 1080px) {
   .container {
     margin-left: 1rem;
