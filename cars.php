@@ -24,7 +24,7 @@ require 'header.php'
                     <?php if (empty($carshow)) : ?>
                         <p>There is no Parts</p>
                     <?php endif; ?>
-                    <img src="img/car1.jpg" alt="">
+                    <img src="<?php echo 'img/' . $item['image']; ?>" alt="">
                     <div class="text">
                         <h1 class="title"><?php echo $item['carname'] ?></h1>
                         <div class="year-container">
