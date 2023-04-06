@@ -15,7 +15,7 @@ if (isset($_POST["submit"])) {
         "<script> alert('Username or Email Has Already Taken'); </script>";
     } else {
         if ($password == $confirmpassword) {
-            $query = "INSERT INTO tb_user VALUES('','$name','$username','$email','$password')";
+            $query = "INSERT INTO tb_user VALUES('','$name','$username','$email','$password','0')";
             mysqli_query($conn, $query);
             echo
             "<script> alert('Registration Successful'); </script>";
