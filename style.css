@@ -189,6 +189,45 @@ header.shadow {
   font-size: 0.938rem;
   font-weight: 300;
 }
+.cars-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.cars-container .box {
+  flex: 1 1 17rem;
+  position: relative;
+  height: 200px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.cars-container .box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+.cars-container .box img:hover {
+  transform: scale(1.1);
+  transition: 0.5;
+}
+.cars-container .box h2 {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  font: 400;
+  font-size: 1rem;
+  background: var(--bg-color);
+  padding: 8px;
+  border-radius: 0.5;
+  transition: all 0.5s;
+}
+.cars-container .box:hover h2 {
+  background: var(--main-color);
+  color: var(--bg-color);
+}
 .about {
   display: flex;
   flex-wrap: wrap;
@@ -212,7 +251,110 @@ header.shadow {
   font-size: 0.938rem;
   margin: 0.5rem 0 1.4rem;
 }
+.parts-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.parts-container .box {
+  flex: 1 1 17rem;
+  position: relative;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background: #f6f6f6;
+  border-radius: 0.5rem;
+}
+.parts-container .box img {
+  width: 100%;
+  height: 150%;
+  object-fit: contain;
+  object-position: center;
+  margin-bottom: 1rem;
+  transition: all 0.5s;
+}
+.parts-container .box img:hover {
+  transform: scale(1.1);
+}
+.parts-container .box h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.parts-container .box span {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--main-color);
+}
+.parts-container .box .bx {
+  color: var(--main-color);
+  margin: 0.8rem 0;
+}
+.parts-container .box .btn {
+  max-width: 120px;
+  transition: all 0.5s;
+}
 
+.parts-container .box .details {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 1.8rem;
+  right: 1rem;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+.parts-container .box .details:hover {
+  color: var(--main-color);
+  text-decoration: underline;
+}
+.blog-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.blog-container .box {
+  flex: 1 1 13rem;
+  padding: 20px;
+  transition: all 1s;
+}
+.blog-container .box:hover {
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.box .blog-btn:hover {
+  color: white;
+}
+
+.blog-container .box span {
+  font-size: 0.8rem;
+  color: var(--main-color);
+}
+
+.blog-container h3 {
+  font-size: 1.3rem;
+}
+.blog-container .box p {
+  font-size: 0.938rem;
+  margin: 4px 0;
+}
+.blog-container .box .blog-btn {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  color: var(--text-color);
+}
+.blog-container .box .blog-btn .bx {
+  font-size: 20px;
+}
+.blog-container .box .blog-btn:hover {
+  color: var(--main-color);
+
+  column-gap: 0.7rem;
+  transition: 0.4s;
+}
 .footer {
   background: var(--text-color);
   color: #f6f6f6;
@@ -262,7 +404,6 @@ header.shadow {
   color: var(--bg-color);
   background: var(--text-color);
 }
-
 @media (max-width: 1080px) {
   .container {
     margin-left: 1rem;
@@ -336,3 +477,96 @@ header.shadow {
     display: contents;
   }
 }
+/* @import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css');
+body {
+    font-family: 'Didact Gothic', sans-serif;
+    color:#333;
+    box-sizing: border-box;
+}
+*{
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+}
+header {
+   
+    height: 110px;
+    padding: 10px 0;
+}
+nav {
+    width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+.lang-menu {
+    width: 100px;
+    text-align: right;
+    font-weight: bold;
+    margin-top: 25px;
+    position: relative;
+}
+.lang-menu .selected-lang {
+    display: flex;   
+    justify-content: space-between;
+    line-height: 2;
+    cursor: pointer;
+}
+.lang-menu .selected-lang:before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-image: url("https://flagsapi.com/us/flat/64.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.lang-menu ul {
+    margin: 0;
+    padding: 0;
+    display: none;
+    background-color: #fff;
+    border: 1px solid #f8f8f8;
+    position: absolute;
+    top: 45px;
+    right: 0px;
+    width: 125px; 
+    border-radius: 5px;
+    box-shadow: 0px 1px 10px rgb(213, 202, 202);
+}
+.lang-menu ul li {
+    list-style: none;
+    text-align: left;
+    display: flex;
+    justify-content: space-between; 
+}
+.lang-menu ul li a {
+    text-decoration: none;
+    width: 125px;
+    padding: 5px 10px;
+    display: block;
+}
+.lang-menu ul li:hover {
+    background-color: #f2f2f2;
+}
+.lang-menu ul li a:before {
+    content: '';
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    margin-right: 10px;
+    background-size: contain;
+    background-repeat: no-repeat; 
+}
+.en:before {
+    background-image: url(https://www.countryflags.io/us/flat/32.png);
+}
+.ar:before {
+    background-image: url(https://www.countryflags.io/ae/flat/32.png);
+}
+.lang-menu:hover ul {
+    display: block;
+} */
