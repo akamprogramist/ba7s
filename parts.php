@@ -22,7 +22,7 @@ require 'header.php'
     <div class="containers">
         <div class="view">
             <h1 class="title">We have all types of Parts</h1>
-            <form action="cars.php" method="POST">
+            <form action="parts.php" method="POST">
                 <input class="search" type="search" placeholder="search" name="search" id="search">
                 <button class="searchbutton" type="submit" name="submit">search</button>
             </form>
@@ -43,7 +43,7 @@ require 'header.php'
 
                         </div>
                         <div class="year-container">
-                            <a href="#" class="buy">View Details</a>
+                            <a href="partspage.php?id=<?php echo $item['id']; ?>" class="buy">View Details</a>
                             <a href="#" class="buy button">Buy Now</a>
                         </div>
                     </div>

@@ -81,12 +81,13 @@ require 'header.php'
         <?php foreach ($parts as $item) : ?>
 
             <div class="box">
+
                 <img src="<?php echo 'img/' . $item['image']; ?>">
                 <h3><?php echo $item['partname'] ?></h3>
                 <span>$<?php echo $item['price'] ?></span>
                 <i class='bx bxs-star'>(<?php echo $item['review'] ?> Reviews)</i>
                 <a href="#" class="btn">Buy Now</a>
-                <a href="#" class="details">View Details</a>
+                <a href="partspage.php?id=<?php echo $item['id']; ?>" class="details">View Details</a>
             </div>
         <?php endforeach; ?>
     </div>
@@ -110,7 +111,7 @@ require 'header.php'
                 <span id="span"><?php echo $item['created_at'] ?></span>
                 <h3><?php echo $item['title'] ?></h3>
                 <p><?php echo substr($item['description'], 0, 50) ?>...</p>
-                <a href="#" id="link" class="blog-btn">Read More<i class='bx bx-right-arrow-alt'></i></a>
+                <a href="blogpage.php?id=<?php echo $item['id']; ?>" id="link" class="blog-btn">Read More<i class='bx bx-right-arrow-alt'></i></a>
             </div>
         <?php endforeach; ?>
 </section>

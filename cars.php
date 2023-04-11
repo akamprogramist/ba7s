@@ -45,6 +45,7 @@ require 'header.php'
                         <div class="ava">
                             <h5><?php echo $item['ava'] ?></h5>
                         </div>
+                        <a href="carpage.php?id=<?php echo $item['id']; ?>" class="buy">View Details</a>
                     </div>
                 </div>
             <?php endforeach; ?>

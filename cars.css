@@ -30,9 +30,9 @@
   margin-bottom: 15px;
 }
 .grid {
-display: grid;
-justify-content: center;
-grid-template-columns: repeat(4, 275px);
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(4, 275px);
   grid-gap: 30px;
 }
 .year-container {
@@ -91,4 +91,7 @@ grid-template-columns: repeat(4, 275px);
 }
 .searchbutton:hover {
   opacity: 0.7;
+}
+.ava {
+  padding-bottom: 10px;
 }

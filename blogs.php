@@ -22,7 +22,7 @@ require 'header.php'
     <div class="containers">
         <div class="view">
             <h1 class="title">Our Blogs</h1>
-            <form action="cars.php" method="POST">
+            <form action="blogs.php" method="POST">
                 <input class="search" type="search" placeholder="search" name="search" id="search">
                 <button class="searchbutton" type="submit" name="submit">search</button>
             </form>
@@ -46,7 +46,7 @@ require 'header.php'
                         </div>
 
                         <div class="blogbutton">
-                            <a href="#" id="link" class="blog-btn">Read More<i class='bx bx-right-arrow-alt'></i></a>
+                            <a href="blogpage.php?id=<?php echo $item['id']; ?>" id="link" class="blog-btn">Read More<i class='bx bx-right-arrow-alt'></i></a>
                         </div>
                     </div>
                 </div>
