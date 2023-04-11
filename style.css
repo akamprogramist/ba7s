@@ -223,6 +223,7 @@ header.shadow {
   padding: 8px;
   border-radius: 0.5;
   transition: all 0.5s;
+  color: black !important;
 }
 .cars-container .box:hover h2 {
   background: var(--main-color);

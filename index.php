@@ -44,8 +44,11 @@ require 'header.php'
         <?php foreach ($carshow as $item) : ?>
 
             <div class="box">
-                <img src="<?php echo 'img/' . $item['image']; ?>">
-                <h2><?php echo $item['carname'] ?></h2>
+                <a href="carpage.php?id=<?php echo $item['id']; ?>">
+
+                    <img src="<?php echo 'img/' . $item['image']; ?>">
+                    <h2><?php echo $item['carname'] ?></h2>
+                </a>
             </div>
         <?php endforeach; ?>
     </div>
@@ -69,7 +72,7 @@ require 'header.php'
 
     </div>
     <div class="seemore">
-        <a href="cars.php" class="see">See All Cars</a>
+        <a href="parts.php" class="see">See All Parts</a>
     </div>
     <div class="parts-container container">
         <?php if (empty($parts)) : ?>
@@ -95,7 +98,7 @@ require 'header.php'
         <p>See The Car News Here.</p>
     </div>
     <div class="seemore">
-        <a href="cars.php" class="see">See All Cars</a>
+        <a href="blogs.php" class="see">See All Blogs</a>
     </div>
     <div class="blog-container container">
         <?php if (empty($blog)) : ?>
@@ -103,11 +106,10 @@ require 'header.php'
         <?php endif; ?>
         <?php foreach ($blog as $item) : ?>
             <div class="box">
-
                 <img src="<?php echo 'img/' . $item['image']; ?>">
                 <span id="span"><?php echo $item['created_at'] ?></span>
                 <h3><?php echo $item['title'] ?></h3>
-                <p><?php echo $item['description'] ?></p>
+                <p><?php echo substr($item['description'], 0, 50) ?>...</p>
                 <a href="#" id="link" class="blog-btn">Read More<i class='bx bx-right-arrow-alt'></i></a>
             </div>
         <?php endforeach; ?>

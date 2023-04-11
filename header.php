@@ -9,6 +9,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="each.css">
     <link rel="stylesheet" href="cars.css">
 </head>
 
@@ -22,7 +23,7 @@
                 <li><a href="index.php" class="active">Home</a></li>
                 <li><a href="cars.php">Cars</a></li>
                 <li><a href="parts.php">Parts</a></li>
-                <li><a href="blog.php">Our Blog</a></li>
+                <li><a href="blogs.php">Our Blog</a></li>
                 <li><a href="about.php">About</a></li>
                 <?php if (!empty($_SESSION["id"]) && $_SESSION['type'] === '1') : ?>
                     <li><a href="logout.php">Logout</a></li>
@@ -33,10 +34,6 @@
                     <li><a href="login.php">Login</a></li>
                 <?php endif; ?>
             </ui>
-            <i class='bx bx-search' id="search-icon"></i>
-            <div class="search-box container">
-                <input type="search" name="" id="" placeholder="Search here...">
-            </div>
         </div>
         </div>
     </header>

@@ -4,15 +4,14 @@ require 'dashboard/config.php';
 <?php
 if (isset($_POST['submit'])) {
     $search = $_POST['search'];
-    $results = mysqli_query($conn, "SELECT * FROM carshow WHERE carname LIKE '%"  . $search .  "%' ");
-    $carshow = mysqli_fetch_all($results, MYSQLI_ASSOC);
+    $results = mysqli_query($conn, "SELECT * FROM blog WHERE title LIKE '%"  . $search .  "%' ");
+    $blog = mysqli_fetch_all($results, MYSQLI_ASSOC);
 } else {
-    $sql = 'SELECT * FROM carshow';
+    $sql = 'SELECT * FROM blog';
     $result = mysqli_query($conn, $sql);
-    $carshow = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $blog = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 ?>
-
 <?php
 require 'header.php'
 ?>
@@ -22,28 +21,32 @@ require 'header.php'
 
     <div class="containers">
         <div class="view">
-            <h1 class="title">We have all types cars</h1>
+            <h1 class="title">Our Blogs</h1>
             <form action="cars.php" method="POST">
                 <input class="search" type="search" placeholder="search" name="search" id="search">
                 <button class="searchbutton" type="submit" name="submit">search</button>
             </form>
         </div>
+
         <div class="grid">
 
-            <?php foreach ($carshow as $item) : ?>
+            <?php foreach ($blog as $item) : ?>
                 <div class="cars">
-                    <?php if (empty($carshow)) : ?>
-                        <p>There is no Cars</p>
+                    <?php if (empty($blog)) : ?>
+                        <p>There is no Parts</p>
                     <?php endif; ?>
                     <img class="img" src="<?php echo 'img/' . $item['image']; ?>" alt="">
                     <div class="text">
-                        <h1 class="title"><?php echo $item['carname'] ?></h1>
-                        <div class="year-container">
-                            <h5 class="year"><?php echo $item['year'] ?></h5>
-                            <h5 class="loan"><?php echo $item['price'] ?>$/day</h5>
+                        <h1 class="title"><?php echo $item['title'] ?></h1>
+                        <div>
+                            <h5><?php echo substr($item['description'], 0, 50) ?>...</h5>
                         </div>
-                        <div class="ava">
-                            <h5><?php echo $item['ava'] ?></h5>
+                        <div class="year-container">
+                            <h5 class="loan"><?php echo $item['created_at'] ?></h5>
+                        </div>
+
+                        <div class="blogbutton">
+                            <a href="#" id="link" class="blog-btn">Read More<i class='bx bx-right-arrow-alt'></i></a>
                         </div>
                     </div>
                 </div>

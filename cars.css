@@ -6,10 +6,14 @@
   text-transform: capitalize;
   text-align: center;
   margin: 20px 0 20px 0;
+  align-items: center;
 }
-
+.title {
+  margin-bottom: 20px;
+}
 .img {
-  height: 300px;
+  height: 250px;
+  object-fit: cover;
 }
 .cars {
   position: relative;
@@ -22,16 +26,69 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
+.title {
+  margin-bottom: 15px;
+}
 .grid {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(4, 275px);
+display: grid;
+justify-content: center;
+grid-template-columns: repeat(4, 275px);
   grid-gap: 30px;
 }
 .year-container {
-  font-size: 20px;
+  font-size: 15px;
   margin-top: 15px;
   margin-bottom: 15px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.buy {
+  width: 100%;
+  color: black;
+  text-decoration: underline;
+  align-items: center;
+}
+.button {
+  text-align: center;
+  background-color: #d90429;
+  padding: 10px 0 10px 0;
+  color: white;
+  text-decoration: none;
+}
+.buy:hover {
+  opacity: 0.7;
+}
+
+.blogbutton .blog-btn {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  color: var(--text-color);
+}
+.blogbutton .blog-btn .bx {
+  font-size: 20px;
+}
+.blogbutton .blog-btn:hover {
+  color: var(--main-color);
+  column-gap: 0.7rem;
+  transition: 0.4s;
+}
+.search {
+  border-color: #d90429;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  padding: 5px 10px 5px 10px;
+}
+.searchbutton {
+  color: white;
+  border: none;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 7px 10px 6px 10px;
+  background-color: #d90429;
+}
+.searchbutton:hover {
+  opacity: 0.7;
 }
