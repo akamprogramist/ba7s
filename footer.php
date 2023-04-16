@@ -11,10 +11,10 @@
         </div>
         <div class="footer-box">
             <h3>Page</h3>
-            <a href="#">Home</a>
-            <a href="#">cars</a>
-            <a href="#">Parts</a>
-            <a href="#">Our blog</a>
+            <a href="index.php">Home</a>
+            <a href="cars.php">cars</a>
+            <a href="parts.php">Parts</a>
+            <a href="blog.php">Our blog</a>
         </div>
         <div class="footer-box">
             <h3>Legal</h3>
