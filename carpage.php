@@ -28,6 +28,7 @@ require 'header.php'
                         <p class="dash">|</p>
                         <p><?php echo $item['ava'] ?></p>
                     </div>
+                    <p class="">Added at: <?php echo $item['date'] ?></p>
                 </div>
                 <div class="avacontainer">
                     <p class="money"><?php echo $item['price'] ?>$/day</p>

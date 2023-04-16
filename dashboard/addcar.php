@@ -7,8 +7,7 @@ if (!empty($_SESSION["id"]) && $_SESSION['type'] === '1') {
 } else {
     header("Location: ../login.php");
 }
-$carname = '';
-$carnameErr =  $imgErr = $yearErr = $priceErr = $slenderErr = $literErr = '';
+$carnameErr =  $imgErr = $yearErr = $priceErr = $slenderErr = $literErr = $dateErr = '';
 
 if (isset($_POST['submit'])) {
     // to upload image ti img folder
@@ -74,6 +73,15 @@ if (isset($_POST['submit'])) {
             FILTER_SANITIZE_SPECIAL_CHARS
         );
     }
+    if (empty($_POST['date'])) {
+        $dateErr = 'date is required';
+    } else {
+        $date = filter_input(
+            INPUT_POST,
+            'date',
+            FILTER_SANITIZE_SPECIAL_CHARS
+        );
+    }
 
     if (empty($_FILES["file"]["name"])) {
         $imgErr = 'image is required';
@@ -130,6 +138,13 @@ if (isset($_POST['submit'])) {
             <input type="number" class="form-control <?php echo $slenderErr ? 'is-invalid' : null ?>" id="slender" name="slender" placeholder="Enter slender number" />
             <div class="invalid-feedback">
                 <?php echo $slenderErr; ?>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="date" class="form-label">date</label>
+            <input type="date" class="form-control <?php echo $dateErr ? 'is-invalid' : null ?>" id="date" name="date" placeholder="Enter date number" />
+            <div class="invalid-feedback">
+                <?php echo $dateErr; ?>
             </div>
         </div>
 
