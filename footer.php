@@ -14,7 +14,7 @@
             <a href="index.php">Home</a>
             <a href="cars.php">cars</a>
             <a href="parts.php">Parts</a>
-            <a href="blog.php">Our blog</a>
+            <a href="blogs.php">Our blog</a>
         </div>
         <div class="footer-box">
             <h3>Legal</h3>
