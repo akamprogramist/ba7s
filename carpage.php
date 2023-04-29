@@ -28,7 +28,6 @@ require 'header.php'
                         <p class="dash">|</p>
                         <p><?php echo $item['ava'] ?></p>
                     </div>
-                    <p class="">Added at: <?php echo $item['date'] ?></p>
                 </div>
                 <div class="avacontainer">
                     <p class="money"><?php echo $item['price'] ?>$/day</p>
@@ -41,8 +40,8 @@ require 'header.php'
                     <p class="iconname"><?php echo $item['slender'] ?> Selender</p>
                 </div>
                 <div class="gridcon">
-                    <p class="icons"><i class='bx bxs-battery'></i></i></p>
-                    <p class="iconname"><?php echo $item['liter'] ?> Liter</p>
+                    <p class="icons"><img src="img/seats.png" style="height: 35px; width: 35px;" class="seats" alt=""></i></p>
+                    <p class="iconname"><?php echo $item['seats'] ?> Seats</p>
                 </div>
                 <div class="gridcon">
                     <p class="icons"><i class='bx bxs-gas-pump'></i></p>

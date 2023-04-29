@@ -24,7 +24,7 @@
                 <li><a href="cars.php">Cars</a></li>
                 <li><a href="parts.php">Parts</a></li>
                 <li><a href="blogs.php">Our Blog</a></li>
-                <li><a href="about.php">About</a></li>
+                <li><a href="#about">About</a></li>
                 <?php if (!empty($_SESSION["id"]) && $_SESSION['type'] === '1') : ?>
                     <li><a href="logout.php">Logout</a></li>
                     <li><a href="dashboard/index.php">Manage</a></li>

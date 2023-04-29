@@ -7,7 +7,7 @@ if (!empty($_SESSION["id"]) && $_SESSION['type'] === '1') {
 } else {
     header("Location: ../login.php");
 }
-$carnameErr =  $imgErr = $yearErr = $priceErr = $slenderErr = $literErr = $dateErr = '';
+$carnameErr =  $imgErr = $yearErr = $priceErr = $slenderErr = $seatsErr  = '';
 
 if (isset($_POST['submit'])) {
     // to upload image ti img folder
@@ -32,19 +32,19 @@ if (isset($_POST['submit'])) {
     } else {
         $price = filter_input(INPUT_POST, 'price', FILTER_SANITIZE_SPECIAL_CHARS);
     }
+    if (empty($_POST['seats'])) {
+        $seatsErr = 'seats is required';
+    } else {
+        $seats = filter_input(
+            INPUT_POST,
+            'seats',
+            FILTER_SANITIZE_SPECIAL_CHARS
+        );
+    }
     if (empty($_POST['slender'])) {
         $slenderErr = 'slender is required';
     } else {
         $slender = filter_input(INPUT_POST, 'slender', FILTER_SANITIZE_SPECIAL_CHARS);
-    }
-    if (empty($_POST['liter'])) {
-        $literErr = 'liter is required';
-    } else {
-        $liter = filter_input(
-            INPUT_POST,
-            'liter',
-            FILTER_SANITIZE_SPECIAL_CHARS
-        );
     }
     if (empty($_POST['ava'])) {
         $avaErr = 'ava is required';
@@ -73,15 +73,6 @@ if (isset($_POST['submit'])) {
             FILTER_SANITIZE_SPECIAL_CHARS
         );
     }
-    if (empty($_POST['date'])) {
-        $dateErr = 'date is required';
-    } else {
-        $date = filter_input(
-            INPUT_POST,
-            'date',
-            FILTER_SANITIZE_SPECIAL_CHARS
-        );
-    }
 
     if (empty($_FILES["file"]["name"])) {
         $imgErr = 'image is required';
@@ -89,8 +80,8 @@ if (isset($_POST['submit'])) {
         move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath);
     }
 
-    if (empty($carnameErr) && empty($imgErr) && empty($yearErr) && empty($priceErr) && empty($slenderErr) && empty($literErr) && empty($avaErr) && empty($gasErr) && empty($automaticErr)) {
-        $sql = "INSERT INTO carshow (carname, image,year,price,slender,liter,ava,gas,automatic)VALUES ('$carname','$fileName','$year','$price','$slender','$liter','$ava','$gas','$automatic') ";
+    if (empty($carnameErr) && empty($imgErr) && empty($yearErr) && empty($priceErr) && empty($seatsErr) && empty($slenderErr) && empty($avaErr) && empty($gasErr) && empty($automaticErr)) {
+        $sql = "INSERT INTO carshow (carname, image,year,price,slender,seats,ava,gas,automatic)VALUES ('$carname','$fileName','$year','$price','$slender','$seats','$ava','$gas','$automatic') ";
         if (mysqli_query($conn, $sql)) {
             header('Location:index.php');
         } else {
@@ -140,19 +131,12 @@ if (isset($_POST['submit'])) {
                 <?php echo $slenderErr; ?>
             </div>
         </div>
-        <div class="mb-3">
-            <label for="date" class="form-label">date</label>
-            <input type="date" class="form-control <?php echo $dateErr ? 'is-invalid' : null ?>" id="date" name="date" placeholder="Enter date number" />
-            <div class="invalid-feedback">
-                <?php echo $dateErr; ?>
-            </div>
-        </div>
 
         <div class="mb-3">
-            <label for="liter" class="form-label">liter a day</label>
-            <input type="number" class="form-control <?php echo $literErr ? 'is-invalid' : null ?>" id="liter" name="liter" placeholder="Enter liter" />
+            <label for="seats" class="form-label">seats</label>
+            <input type="number" class="form-control <?php echo $seatsErr ? 'is-invalid' : null ?>" id="seats" name="seats" placeholder="Enter seats" />
             <div class="invalid-feedback">
-                <?php echo $literErr; ?>
+                <?php echo $seatsErr; ?>
             </div>
         </div>
         <div class="mb-3">
