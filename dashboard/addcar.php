@@ -1,13 +1,13 @@
 <?php
 require 'config.php';
-if (!empty($_SESSION["id"]) && $_SESSION['type'] === '1') {
-    $id = $_SESSION["id"];
-    $result = mysqli_query($conn, "SELECT * FROM tb_user WHERE id = $id");
-    $row = mysqli_fetch_assoc($result);
-} else {
-    header("Location: ../login.php");
-}
-$carnameErr =  $imgErr = $yearErr = $priceErr = $slenderErr = $seatsErr  = '';
+// if (!empty($_SESSION["id"]) && $_SESSION['type'] === '1') {
+//     $id = $_SESSION["id"];
+//     $result = mysqli_query($conn, "SELECT * FROM tb_user WHERE id = $id");
+//     $row = mysqli_fetch_assoc($result);
+// } else {
+//     header("Location: ../login.php");
+// }
+// $carnameErr =  $imgErr = $yearErr = $priceErr = $seatsErr  = '';
 
 if (isset($_POST['submit'])) {
     // to upload image ti img folder
@@ -41,11 +41,9 @@ if (isset($_POST['submit'])) {
             FILTER_SANITIZE_SPECIAL_CHARS
         );
     }
-    if (empty($_POST['slender'])) {
-        $slenderErr = 'slender is required';
-    } else {
-        $slender = filter_input(INPUT_POST, 'slender', FILTER_SANITIZE_SPECIAL_CHARS);
-    }
+
+    $slender = filter_input(INPUT_POST, 'slender', FILTER_SANITIZE_SPECIAL_CHARS);
+
     if (empty($_POST['ava'])) {
         $avaErr = 'ava is required';
     } else {
@@ -126,10 +124,7 @@ if (isset($_POST['submit'])) {
         </div>
         <div class="mb-3">
             <label for="slender" class="form-label">slender</label>
-            <input type="number" class="form-control <?php echo $slenderErr ? 'is-invalid' : null ?>" id="slender" name="slender" placeholder="Enter slender number" />
-            <div class="invalid-feedback">
-                <?php echo $slenderErr; ?>
-            </div>
+            <input type="number" class="form-control" id="slender" name="slender" placeholder="Enter slender number" />
         </div>
 
         <div class="mb-3">
