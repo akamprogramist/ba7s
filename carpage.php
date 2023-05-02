@@ -31,7 +31,7 @@ require 'header.php'
                 </div>
                 <div class="avacontainer">
                     <p class="money"><?php echo $item['price'] ?>$/day</p>
-                    <button class="eachbtn">get the car</button>
+                    <a href="getcar.php?id=<?php echo $item['id']; ?>" class="eachbtn">get the car</a>
                 </div>
             </div>
             <div class="eachgrid">
