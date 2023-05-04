@@ -13,24 +13,25 @@ require 'header.php'
 ?>
 
 <?php
-$value;
+$GLOBALS["value"] = $value;
 foreach ($carshow as $row) {
     if (isset($_POST['submit'])) {
         $value = $_POST['select'];
-        $_SESSION["value"] = $value;
+        $GLOBALS["value"] = $value;
     }
     $carname = $row['carname'];
-    $price = $_SESSION["value"] * $row['price'];
-    $_SESSION["price"] = $price;
-    $_SESSION["carname"] = $row['carname'];
+    $price = $GLOBALS["value"] * $row['price'];
+    $GLOBALS["price"] = $price;
+    $GLOBALS["carname"] = $row['carname'];
 }
 
 if (array_key_exists('rent', $_POST)) {
     rent($conn);
 }
-$price = $_SESSION["price"];
-$value = $_SESSION["value"];
-$carname = $_SESSION["carname"];
+
+$_SESSION['price'] = $GLOBALS["price"];
+$_SESSION['value'] = $GLOBALS["value"];
+$_SESSION['carname'] = $GLOBALS["carname"];
 function rent($conn)
 {
     $price = $_SESSION["price"];
@@ -62,25 +63,27 @@ function rent($conn)
             <div class="eachgrid">
                 <form method="post">
                     <div class="avacontainer">
-                        <p>get this car for </p>
-                        <select name="select" id="select" class="select">
-                            <option value="1" selected>1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                        </select>
-                        <p>days</p>
-                        <div><button type="submit" name="submit" class="btn">calculate</button></div>
+                        <div class="textcon">
+                            <p>get this car for </p>
+                            <select name="select" id="select" class="select">
+                                <option value="1" selected>1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                            <p>days</p>
+                        </div>
                     </div>
+
+                    <button type="submit" name="submit" class="btn">calculate</button>
+
                 </form>
-                <div class="avacontainer">
-                    <p> the car for </p>
-                    <p><?php echo $_SESSION["value"] ?> days is</p>
-                    <p><?php echo $_SESSION["price"] ?> $</p>
-                </div>
+            </div>
+            <div class="textcon">
+                <p> the car for <?php echo $GLOBALS["value"] ?> days is <?php echo $GLOBALS["price"] ?> $</p>
             </div>
             <div class="textcon">
 
