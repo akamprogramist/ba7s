@@ -13,35 +13,18 @@ require 'header.php'
 ?>
 
 <?php
-$GLOBALS["value"] = $value;
 foreach ($carshow as $row) {
     if (isset($_POST['submit'])) {
-        $value = $_POST['select'];
-        $GLOBALS["value"] = $value;
+        $fromdate = $_POST['fromdate'];
+        $todate =  $_POST['todate'];
+        $carname = $row['carname'];
+        $sql = "INSERT INTO rent (fromdate, todate,carname)VALUES ('$fromdate','$todate','$carname') ";
+
+        if (mysqli_query($conn, $sql)) {
+            echo '<script>alert("Car rented successfully")</script>';
+        }
     }
-    $carname = $row['carname'];
-    $price = $GLOBALS["value"] * $row['price'];
-    $GLOBALS["price"] = $price;
-    $GLOBALS["carname"] = $row['carname'];
 }
-
-if (array_key_exists('rent', $_POST)) {
-    rent($conn);
-}
-
-$_SESSION['price'] = $GLOBALS["price"];
-$_SESSION['value'] = $GLOBALS["value"];
-$_SESSION['carname'] = $GLOBALS["carname"];
-function rent($conn)
-{
-    $price = $_SESSION["price"];
-    $value = $_SESSION["value"];
-    $carname = $_SESSION["carname"];
-    echo '<script>alert("the car rented for ' . $value . ' days with the price of ' . $price . ' $ successfully ")</script>';
-    $sql = "INSERT INTO rent (days, money,carname)VALUES ('$value','$price','$carname') ";
-    mysqli_query($conn, $sql);
-}
-
 ?>
 
 
@@ -61,36 +44,20 @@ function rent($conn)
                 </div>
             </div>
             <div class="eachgrid">
-                <form method="post">
+                <form method="POST">
+                    <p>get this car </p>
                     <div class="avacontainer">
                         <div class="textcon">
-                            <p>get this car for </p>
-                            <select name="select" id="select" class="select">
-                                <option value="1" selected>1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                            </select>
-                            <p>days</p>
+                            <p> from </p>
+                            <input type="date" name="fromdate" style="margin-right: 5px;margin-left: 5px;" id="fromdate" placeholder="from">
+                            <p> to </p>
+                            <input type="date" name="todate" style="margin-left: 5px;" id="todate" placeholder="to">
+                            <input type="submit" name="submit" class="btn btn-dark w-100" />
                         </div>
                     </div>
-
-                    <button type="submit" name="submit" class="btn">calculate</button>
-
                 </form>
             </div>
-            <div class="textcon">
-                <p> the car for <?php echo $GLOBALS["value"] ?> days is <?php echo $GLOBALS["price"] ?> $</p>
-            </div>
-            <div class="textcon">
 
-                <form method="post">
-                    <div><input type="submit" name="rent" class="eachbtn" value="Rent This Car"></input></div>
-                </form>
-            </div>
 
         <?php endforeach; ?>
     </div>
