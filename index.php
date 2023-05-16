@@ -2,17 +2,17 @@
 require 'dashboard/config.php';
 ?>
 <?php
-$sql = 'SELECT * FROM carshow limit 6';
+$sql = 'SELECT * FROM carshow ORDER BY id DESC limit 6';
 $result = mysqli_query($conn, $sql);
 $carshow = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 <?php
-$sql = 'SELECT * FROM parts limit 6';
+$sql = 'SELECT * FROM parts ORDER BY id DESC limit 6';
 $result = mysqli_query($conn, $sql);
 $parts = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 <?php
-$sql = 'SELECT * FROM blog limit 6';
+$sql = 'SELECT * FROM blog ORDER BY id DESC limit 6';
 $result = mysqli_query($conn, $sql);
 $blog = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
